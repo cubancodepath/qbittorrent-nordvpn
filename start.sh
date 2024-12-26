@@ -19,18 +19,21 @@ done
 
 # Connect to NordVPN with specified country
 if [ -n "${NORDVPN_COUNTRY}" ]; then
+    echo "Connecting to NordVPN in ${NORDVPN_COUNTRY}"
     nordvpn connect ${NORDVPN_COUNTRY}
 else
+    echo "Connecting to NordVPN (default)"
     nordvpn connect
 fi
 
 # Wait until VPN connection is established
 until nordvpn status | grep -q "Status: Connected"; do
     echo "Waiting for VPN connection..."
+    nordvpn status
     sleep 5
 done
 
 echo "VPN connected successfully"
 
-# Start qBittorrent
-su qbittorrent -c "qbittorrent-nox --webui-port=8080 --profile=/config"
+# Start qBittorrent directly
+exec qbittorrent-nox --webui-port=8080 --profile=/config
