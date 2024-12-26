@@ -36,4 +36,4 @@ done
 echo "VPN connected successfully"
 
 # Start qBittorrent directly
-exec qbittorrent-nox --webui-port=8080 --profile=/config
+exec qbittorrent-nox --webui-port=8080 --profile=/ --save-path=/downloads
