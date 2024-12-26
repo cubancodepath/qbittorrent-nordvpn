@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# Application data
+config/*
+downloads/*
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
